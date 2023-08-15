@@ -14,7 +14,6 @@ after_success:
   - docker build -t ajay/multi-nginx ./nginx
   - docker build -t ajay/multi-server ./server
   - docker build -t ajay/multi-worker ./worker
-  
 
 # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
