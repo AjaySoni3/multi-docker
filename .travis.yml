@@ -14,3 +14,13 @@ after_success:
   - docker build -t ajay/multi-nginx ./nginx
   - docker build -t ajay/multi-server ./server
   - docker build -t ajay/multi-worker ./worker
+
+# Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+# Take those images and push them to docker hub
+
+  - docker push ajay/multi-client
+  - docker push ajay/multi-nginx
+  - docker push ajay/multi-server
+  - docker push ajay/multi-worker
