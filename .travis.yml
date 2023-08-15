@@ -25,7 +25,6 @@ after_success:
   - docker push ajaysoni101/multi-server
   - docker push ajaysoni101/multi-worker
 
-
 deploy:
   provider: elasticbeanstalk
   region: "ap-south-1"
