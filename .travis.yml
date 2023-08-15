@@ -1,0 +1,16 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t ajay/docker-react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true ajay/docker-react-test npm test
+
+after_success:
+  - docker build -t ajay/multi-client ./client
+  - docker build -t ajay/multi-nginx ./nginx
+  - docker build -t ajay/multi-server ./server
+  - docker build -t ajay/multi-worker ./worker
